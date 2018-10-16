@@ -13,12 +13,41 @@ namespace xadrez_console
         {
             for (int i = 0; i < tab.linhas; i++)
             {
-                for(int j = 0; j < tab.colunas; j++)
+                Console.Write(tab.linhas - i+" ");
+                for (int j = 0; j < tab.colunas; j++)
                 {
-                    Console.Write(tab.peca(i, j) == null ?" -":" "+tab.peca(i,j).ToString());
+                    if (tab.peca(i, j) == null)
+                    {
+                        Console.Write("- ");
+                    }
+                    else
+                    {
+                        imprimirPeca(tab.peca(i, j));
+                    }
+                    
                     Console.Write(j==tab.colunas-1?"\n":"");
                 }
             }
+            Console.WriteLine("  A B C D E F G H");
+        }
+
+        public static void imprimirPeca(Peca peca)
+        {
+            switch (peca.cor)
+            {
+                case Cor.Branca:
+                    Console.Write(peca + " ");
+                    break;
+                case Cor.Preta:
+                    ConsoleColor aux = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write(peca + " ");
+                    Console.ForegroundColor = aux;
+                    break;
+                default:
+                    break;
+            }
+            
         }
         
     }
