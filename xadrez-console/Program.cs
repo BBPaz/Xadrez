@@ -52,13 +52,15 @@ namespace xadrez_console{
 
 
                 }
+                Console.Clear();
+                Tela.imprimirPartida(partida);
+                Console.ReadLine();
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-
+                Console.ReadLine();
             }
-            Console.ReadLine();
         }
     }
 }
