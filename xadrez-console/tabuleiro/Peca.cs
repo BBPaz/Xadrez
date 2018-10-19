@@ -1,4 +1,6 @@
-﻿namespace tabuleiro
+﻿using System;
+
+namespace tabuleiro
 {
     public abstract class Peca
     {
@@ -22,7 +24,7 @@
 
         public void reduzirQteMovimentos()
         {
-            qteMovimentos++;
+            qteMovimentos--;
         }
 
         public bool existeMovimentoPossivel()

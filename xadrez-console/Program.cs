@@ -1,9 +1,12 @@
 ﻿using System;
 using tabuleiro;
 using xadrez;
+using System.Collections.Generic;
 
-namespace xadrez_console{
 
+namespace xadrez_console {
+
+    
     class Program{
 
         public static void Main(string[] args){

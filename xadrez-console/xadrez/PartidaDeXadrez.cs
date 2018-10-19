@@ -37,15 +37,26 @@ namespace xadrez
             return pecaCapturada;
         }
 
+        public Peca testaMovimento(Posicao origem, Posicao destino)
+        {
+            Peca p = tab.retirarPeca(origem);
+            p.incrementarQteMovimentos();
+            Peca pecaCapturada = tab.retirarPeca(destino);
+            tab.colocarPeca(p, destino);
+            return pecaCapturada;
+        }
+
         public void desfazMovimento(Posicao origem, Posicao destino, Peca pecaCapturada)
         {
             Peca pMov = tab.retirarPeca(destino);
             pMov.reduzirQteMovimentos();
             if (pecaCapturada != null)
             {
+                capturadas.Remove(pecaCapturada);
                 tab.colocarPeca(pecaCapturada, destino);
             }
             tab.colocarPeca(pMov, origem);
+            
         }
 
         public void realizaJogada(Posicao origem, Posicao destino)
@@ -56,7 +67,7 @@ namespace xadrez
                 desfazMovimento(origem, destino, pecaCapturada);
                 throw new TabuleiroException("Você não pode colocar seu rei em xeque.");
             }
-            if (estaEmXeque(jogadorAtual))
+            if (estaEmXeque(adversaria(jogadorAtual)) || estaEmXeque(jogadorAtual))
             {
                 xeque = true;
             }
@@ -227,6 +238,7 @@ namespace xadrez
 
             colocarNovaPeca('d', 1, new Rei(tab, Cor.Branca));
             colocarNovaPeca('c', 1, new Torre(tab, Cor.Branca));
+            colocarNovaPeca('d', 5, new Cavalo(tab, Cor.Branca));
             colocarNovaPeca('h', 7, new Torre(tab, Cor.Branca));
 
             /*colocarNovaPeca('c', 2, new Torre(tab, Cor.Branca));
