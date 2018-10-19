@@ -37,15 +37,6 @@ namespace xadrez
             return pecaCapturada;
         }
 
-        public Peca testaMovimento(Posicao origem, Posicao destino)
-        {
-            Peca p = tab.retirarPeca(origem);
-            p.incrementarQteMovimentos();
-            Peca pecaCapturada = tab.retirarPeca(destino);
-            tab.colocarPeca(p, destino);
-            return pecaCapturada;
-        }
-
         public void desfazMovimento(Posicao origem, Posicao destino, Peca pecaCapturada)
         {
             Peca pMov = tab.retirarPeca(destino);
@@ -234,10 +225,10 @@ namespace xadrez
 
             colocarNovaPeca('a', 8, new Rei(tab, Cor.Preta));
             colocarNovaPeca('b', 8, new Torre(tab, Cor.Preta));
-            colocarNovaPeca('c', 6, new Bispo(tab, Cor.Preta));
+            colocarNovaPeca('b', 3, new Bispo(tab, Cor.Preta));
 
-            colocarNovaPeca('d', 1, new Rei(tab, Cor.Branca));
-            colocarNovaPeca('c', 1, new Torre(tab, Cor.Branca));
+            colocarNovaPeca('e', 2, new Rei(tab, Cor.Branca));
+            colocarNovaPeca('b', 1, new Torre(tab, Cor.Branca));
             colocarNovaPeca('d', 5, new Cavalo(tab, Cor.Branca));
             colocarNovaPeca('h', 7, new Torre(tab, Cor.Branca));
 
